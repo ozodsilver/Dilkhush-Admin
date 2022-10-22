@@ -5,13 +5,25 @@ import Profile from '@/components/Profile'
 import Tables from '@/components/Tables'
 import Maps from '@/components/Maps'
 import BadGateway from '@/components/BadGateway'
-
-
+import Login from '@/components/Login'
+import Home from '../Home.vue'
 Vue.use(Router);
 
 export default new Router({
   mode: 'history',
   routes: [
+    {
+      path: '/',
+      component: Login
+    },
+
+
+    {
+      path: '/Home',
+      component: Home
+    },
+
+
     {
       path: '/dashboard',
       name: 'Dashboard',
