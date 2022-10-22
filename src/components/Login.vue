@@ -39,7 +39,8 @@
         </div>
       </div>
     </div>
-
+  
+  
     <div class="loade" v-if="this.$store.state.loade">
       <div
         class="spinner-border text-light"
