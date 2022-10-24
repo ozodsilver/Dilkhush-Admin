@@ -19,7 +19,7 @@
           <mdb-list-group-item
             :action="true"
             :class="activeItem === 2 && 'active'"
-            ><mdb-icon icon="user" class="mr-3" />Profile</mdb-list-group-item
+            ><mdb-icon icon="utensils" class="mr-3" />Maxsulotlar</mdb-list-group-item
           >
         </router-link>
         <router-link to="/tables" @click.native="activeItem = 3">
