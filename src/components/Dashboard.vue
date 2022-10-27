@@ -1,31 +1,55 @@
 <template>
   <section id="dashboard">
-    <mdb-card class="mb-4">
+    <mdb-card class="mb-4  ">
       <mdb-card-body class="d-sm-flex justify-content-between">
         <h4 class="mb-sm-0 pt-2">
           <a href="" target="_blank">Dilkhush</a><span>/</span
           ><span>Buyurtmalar</span>
         </h4>
 
-       <div class="d-flex align-items-center justify-content-between w-25">
-        <i class="fas fa-bell fa-2x text-muted" ></i>
-        <span style="width:10px; height: 10px; position: absolute;top:25px; " class="bg-danger rounded-circle" v-if="have" ></span>
-        <p>
+        <div class="d-flex align-items-center justify-content-between w-50">
+          <router-link  to="/Home" class="fas fa-sync text-muted" @click="this.$router.reload()"></router-link>
+          <button
+            type="button"
+            class="border-0 rounded btn-primary position-relative"
+            title="Active buyurtmalar"
+          >
 
- 
-</p>
-        <form class="d-flex md-form justify-content-center" style="margin: 0">
-          <input
-            aria-label="Search"
-            class="form-control"
-            placeholder="Qidiruv"
-            type="search"
-          />
-          <mdb-btn color="primary" size="sm" class="my-0" type="submit"
-            ><i class="fa fa-search"></i
-          ></mdb-btn>
-        </form>
-       </div>
+        
+
+            <i class="fas fa-bell">
+              
+            </i>
+            <span
+              class="
+                position-absolute
+                top-0
+                start-100
+                translate-middle
+                badge
+                rounded-pill
+                badge-danger
+              "
+              id="or"
+            >
+            {{counte}}
+            </span>
+          </button>
+         <div class="d-flex flex-column align-items-center">
+          <i class="fas fa-user-alt text-muted"></i>
+          <b class="text-muted">Admin</b>
+         </div>
+          <p></p>
+          <form class="d-flex md-form justify-content-center" style="margin: 0">
+            <input
+              aria-label="Search"
+              class="form-control"
+              placeholder="Qidiruv"
+              type="search"
+            />
+          
+          </form>
+        </div>
       </mdb-card-body>
     </mdb-card>
     <section class="mt-lg-5">
@@ -138,17 +162,17 @@
     </section>
 
     <div class="container-fluid">
-      <h1 class="text-muted text-right text-primary ">Active buyurtmalar</h1>
+      <h1 class="text-muted text-right text-primary">Active buyurtmalar</h1>
 
-<div class="w-100 d-flex justify-content-center align-items-center" style="height: 100vh;" v-if="loading">
-  <div class="spinner-border text-primary" role="status" >
-
-</div>
-</div>
-      
+      <div
+        class="w-100 d-flex justify-content-center align-items-center"
+        style="height: 100vh"
+        v-if="loading"
+      >
+        <div class="spinner-border text-primary" role="status"></div>
+      </div>
 
       <div class="row">
-       
         <div class="col-6 mt-3" v-for="zakaz in zakazlar" :key="zakaz._id">
           <div class="card">
             <!-- <h4>{{zakaz}}</h4> -->
@@ -166,52 +190,59 @@
 
             <div class="card-body">
               <!-- <h5 class="card-title">{{ zakaz }}</h5> -->
-              <h5 class="text-muted " style="font-weight: bold;">Buyurtma berilgan telefon raqami</h5>
+              <h5 class="text-muted" style="font-weight: bold">
+                Buyurtma berilgan telefon raqami
+              </h5>
               <div class="d-flex align-items-center">
                 <i class="fas fa-phone fa-2x text-primary"></i>
                 <h5 class="text-muted m-0 ml-3">{{ zakaz.phone }}</h5>
               </div>
               <hr />
-              <h5 class="text-muted ">Buyurtma beruvchining manzili</h5>
+              <h5 class="text-muted">Buyurtma beruvchining manzili</h5>
               <div class="d-flex align-items-center">
                 <i class="fas fa-map-marked-alt fa-2x text-primary"></i>
-              <h5 class="ml-3 m-0 text-muted">  {{ zakaz.address }}</h5>
+                <h5 class="ml-3 m-0 text-muted">{{ zakaz.address }}</h5>
               </div>
-             
-              <hr>
+
+              <hr />
               <h5 class="text-muted">Buyurtma beruvchi</h5>
               <div class="d-flex align-items-center">
                 <i class="far fa-user-circle fa-2x text-primary"></i>
-              <h5 class="ml-3 m-0 text-muted">  {{ zakaz.user_name }}</h5>
+                <h5 class="ml-3 m-0 text-muted">{{ zakaz.user_name }}</h5>
               </div>
-              <hr>
-              <h4 class="text-muted"><i class="fas fa-utensils"></i> Buyurtma qilingan maxsulotlar</h4>
+              <hr />
+              <h4 class="text-muted">
+                <i class="fas fa-utensils"></i> Buyurtma qilingan maxsulotlar
+              </h4>
               <h5 v-for="pro in zakaz.product_ID" :key="pro">
                 <div class="d-flex align-items-center">
-              
-              <h5 class="ml-3 m-0 ">  {{ pro.name}} - {{pro.count}}</h5>
-              </div>
-              <hr>
-                
-                </h5>
+                  <h5 class="ml-3 m-0">{{ pro.name }} - {{ pro.count }}</h5>
+                </div>
+                <hr />
+              </h5>
 
-             
-             <div>
-              <h5 class="text-muted">Umumiy narx</h5>
-              <div class="d-flex align-items-center">
-                <i class="fas fa-hand-holding-usd fa-2x text-primary"></i>
-              <h5 class="ml-3 m-0 text-warning">  {{ zakaz.totalPrice }}</h5>
+              <div>
+                <h5 class="text-muted">Umumiy narx</h5>
+                <div class="d-flex align-items-center">
+                  <i class="fas fa-hand-holding-usd fa-2x text-primary"></i>
+                  <h5 class="ml-3 m-0 text-warning">{{ zakaz.totalPrice }}</h5>
+                </div>
               </div>
-             </div>
-              
-             <div class="d-flex justify-content-between align-items-center">
-              <span class=" text-success"> <span class="text-dark">status:</span> {{zakaz.status}}</span>
-           <div>
-            
-            <button class="btn btn-danger">Rad etish <i class="fas fa-times"></i></button>
-           <button class="btn btn-success">Qabul qilish <i class="fas fa-check"></i></button>
-           </div>
-             </div>
+
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="text-success">
+                  <span class="text-dark">status:</span>
+                  {{ zakaz.status }}</span
+                >
+                <div>
+                  <button class="btn btn-danger">
+                    Rad etish <i class="fas fa-times"></i>
+                  </button>
+                  <button class="btn btn-success">
+                    Qabul qilish <i class="fas fa-check"></i>
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -265,12 +296,12 @@ export default {
   data() {
     return {
       zakazlar: [],
-      loading:true,
-      have:false
+      loading: true,
     };
   },
 
   async mounted() {
+    let or = document.querySelector('#or')
     await axios
       .get("https://dilkhush-fayz.herokuapp.com/api/order/activeOrder", {
         headers: {
@@ -279,15 +310,10 @@ export default {
         },
       })
       .then((res) => {
-        this.loading = false
-       
-setInterval(() => {
-  if(res.data.data.length > 0){
-  this.have = true
- }
-}, 2000);
+        this.loading = false;
+
+    or.innerHTML = res.data.data.length 
         res.data.data.forEach((el) => {
-       
           this.zakazlar.push(el);
           console.log(el.order_id);
         });
@@ -304,7 +330,7 @@ h3,
 h4,
 h1,
 h5 {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
 }
 .cascading-admin-card {
   margin: 20px 0;
@@ -347,5 +373,5 @@ h5 {
   margin-top: 10px;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap");
 </style>
