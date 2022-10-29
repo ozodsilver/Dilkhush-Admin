@@ -8,7 +8,7 @@
         </h4>
 
         <div class="d-flex align-items-center justify-content-between w-50">
-          <router-link  to="/Home" class="fas fa-sync text-muted" @click="this.$router.reload()"></router-link>
+          <b  class="fas fa-sync text-muted" @click="updatee"></b>
           <button
             type="button"
             class="border-0 rounded btn-primary position-relative"
@@ -37,7 +37,7 @@
           </button>
          <div class="d-flex flex-column align-items-center">
           <i class="fas fa-user-alt text-muted"></i>
-          <b class="text-muted">Admin</b>
+          <span class="text-muted">Admin</span>
          </div>
           <p></p>
           <form class="d-flex md-form justify-content-center" style="margin: 0">
@@ -50,6 +50,9 @@
           
           </form>
         </div>
+
+
+        
       </mdb-card-body>
     </mdb-card>
     <section class="mt-lg-5">
@@ -174,6 +177,7 @@
 
       <div class="row">
         <div class="col-6 mt-3" v-for="zakaz in zakazlar" :key="zakaz._id">
+          
           <div class="card">
             <!-- <h4>{{zakaz}}</h4> -->
             <div
@@ -214,7 +218,7 @@
               <h4 class="text-muted">
                 <i class="fas fa-utensils"></i> Buyurtma qilingan maxsulotlar
               </h4>
-              <h5 v-for="pro in zakaz.product_ID" :key="pro">
+              <h5 v-for="(index,pro) in zakaz.product_ID" :key="index">
                 <div class="d-flex align-items-center">
                   <h5 class="ml-3 m-0">{{ pro.name }} - {{ pro.count }}</h5>
                 </div>
@@ -235,12 +239,20 @@
                   {{ zakaz.status }}</span
                 >
                 <div>
-                  <button class="btn btn-danger">
-                    Rad etish <i class="fas fa-times"></i>
+
+                  
+            
+       <button class="btn-danger p-2 px-3 border-0 rounded" @click="show = !show" v-if="!show"> <i class="fas fa-trash"></i></button>
+               
+       <transition name="bounce">
+ 
+                  <button class="p-3  border-0 rounded-lg btn-success " @click="AddModal(zakaz._id )" v-if="show">
+                    Buyurtma qabul qilindi, <span class="text-warning">O'chirish</span> <i class="far fa-trash-alt"></i>
                   </button>
-                  <button class="btn btn-success">
-                    Qabul qilish <i class="fas fa-check"></i>
-                  </button>
+
+</transition>
+
+
                 </div>
               </div>
             </div>
@@ -297,6 +309,7 @@ export default {
     return {
       zakazlar: [],
       loading: true,
+      show:false,
     };
   },
 
@@ -320,7 +333,24 @@ export default {
       });
   },
 
-  methods: {},
+  methods: {
+    updatee(){
+     setTimeout(()=>{
+this.$router.replace('/profile')
+     },10)
+
+     setTimeout(()=>{
+this.$router.replace('/Home')
+     },20)
+    },
+
+      AddModal(id){
+    
+console.log(id)
+  }
+  },
+
+
 };
 </script>
 
@@ -373,5 +403,36 @@ h5 {
   margin-top: 10px;
 }
 
+.shows{
+  display: block !important;
+}
+
+
+
+
+
+
+.bounce-enter-active {
+  animation: bounce-in .5s;
+}
+.bounce-leave-active {
+  animation: bounce-in 1s reverse;
+}
+@keyframes bounce-in {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap");
 </style>
+
+
+
+
+

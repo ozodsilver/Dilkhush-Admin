@@ -26,7 +26,7 @@
           <mdb-list-group-item
             :action="true"
             :class="activeItem === 3 && 'active'"
-            ><mdb-icon icon="table" class="mr-3" />Tables</mdb-list-group-item
+            ><mdb-icon icon="fas fa-hourglass-end" class="mr-3" />finished product</mdb-list-group-item
           >
         </router-link>
         
