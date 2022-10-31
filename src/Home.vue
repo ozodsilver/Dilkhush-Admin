@@ -29,15 +29,18 @@
             ><mdb-icon icon="fas fa-hourglass-end" class="mr-3" />finished product</mdb-list-group-item
           >
         </router-link>
+
+
+        
         
         <router-link to="/404" @click.native="activeItem = 5">
           <mdb-list-group-item
             :action="true"
             :class="activeItem === 5 && 'active'"
             ><mdb-icon
-              icon="exclamation"
+              icon=" fa-plus-circle"
               class="mr-3"
-            />404</mdb-list-group-item
+            />Maxsulot qo'shish</mdb-list-group-item
           >
         </router-link>
       </mdb-list-group>

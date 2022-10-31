@@ -1,47 +1,141 @@
 <template>
-  <section id="bad-gateway">
-    <div class="full">
-      <mdb-row class="bad-gateway-row">
-        <mdb-col md="8">
-          <img alt="Error 404" class="img-fluid" hieght="20px" src="../assets/dilkhush.png"/>
-          <h2 class="h2-responsive mt-3 mb-2">404. That's an error.</h2>
-          <h4>The requested URL was not found on this server.</h4>
-        </mdb-col>
-        <mdb-col md="4">
-          <img alt="Error 404" class="img-fluid" src="https://mdbootstrap.com/img/Others/grafika404-bf.png"/>
-        </mdb-col>
-      </mdb-row>
+  <div id="add">
+    <div class="container">
+      <h1 class="my-4 text-muted">
+        Mahsulot qo'shish <i class="fas fa-plus-circle text-primary"></i>
+      </h1>
+
+      <img src="../assets/dilkhush.png" alt="" class="w-25 m-auto d-block" />
+
+      <select class="form-select" v-model="val">
+        <option selected value="fast_foods">Fast Food</option>
+        <option value="pizzas">Pitsalar</option>
+        <option value="national_foods">Milliy taomlar</option>
+        <option value="drinks">Ichimliklar</option>
+        <option value="salat">Salat</option>
+      </select>
+
+      <div class="row">
+        <div class="col-6 my-3">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="name"
+            v-model="name"
+          />
+        </div>
+
+        <div class="col-6 my-3">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="tavsif"
+            v-model="description"
+          />
+        </div>
+
+        <div class="col-6 my-3">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="details"
+            v-model="details"
+          />
+        </div>
+
+        <div class="col-6 my-3">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Narxi"
+            v-model="price"
+          />
+        </div>
+
+        <div class="col-12">
+          <div class="input-group mb-3">
+            <input
+              type="file"
+              class="form-control"
+              id="inputGroupFile02"
+              ref="image"
+              v-on:change="handleFileUpload()"
+            />
+            <label class="input-group-text" for="inputGroupFile02"
+              >Rasm yuklash</label
+            >
+          </div>
+        </div>
+
+        <div class="col-12">
+          <button
+            class="btn-danger border-0 p-3 rounded w-25"
+            @click="PostGoods"
+          >
+            joylash <i class="fas fa-plus"></i>
+          </button>
+        </div>
+      </div>
     </div>
-  </section>
+  </div>
 </template>
 
 <script>
-import { mdbRow, mdbCol } from 'mdbvue'
-
+import axios from "axios";
 export default {
-  name: 'BadGateway',
-  components: {
-    mdbRow,
-    mdbCol
-  },
-  data () {
+  name: "AddProduct",
+  data() {
     return {
-    }
-  }
-}
+      val: "",
+      name: "",
+      description: "",
+      details: "",
+      price: "",
+      image: "",
+    };
+  },
+
+  methods: {
+    handleFileUpload() {
+      this.image = this.$refs.image.files[0];
+    },
+
+    async PostGoods() {
+      let num = +this.price;
+
+  console.log(this.image)
+
+
+
+      await axios
+        .post(
+          "https://dilkhush-fayz.herokuapp.com/api/product/add",
+
+          {
+            name: this.name,
+            description: this.description,
+            details: this.details,
+            price: num,
+            categoryName: this.val,
+            image: this.image,
+          },
+
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+              "Authorization": `${localStorage.getItem("jwt")}`,
+            },
+          },
+
+         
+        )
+        .then((el) => {
+          console.log(el);
+        });
+    },
+  },
+};
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-.full {
-  height: 70vh;
-}
-.bad-gateway-row {
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 55%;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-}
+<style  scoped>
 </style>

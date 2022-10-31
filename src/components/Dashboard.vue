@@ -218,8 +218,9 @@
               <h4 class="text-muted">
                 <i class="fas fa-utensils"></i> Buyurtma qilingan maxsulotlar
               </h4>
-              <h5 v-for="(index,pro) in zakaz.product_ID" :key="index">
+              <h5 v-for="(pro,index) in zakaz.product_ID" :key="index">
                 <div class="d-flex align-items-center">
+          
                   <h5 class="ml-3 m-0">{{ pro.name }} - {{ pro.count }}</h5>
                 </div>
                 <hr />

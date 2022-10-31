@@ -53,7 +53,7 @@ export default new Router({
     {
       path: '*',
       props: { page: 5 },
-      redirect: '/404'
+      redirect: '/'
     }
   ]
 })
