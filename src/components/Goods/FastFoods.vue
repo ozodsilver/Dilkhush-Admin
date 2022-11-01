@@ -46,6 +46,10 @@
                             >oxirgi yangilanish {{ foods.updatedAt }}</small
                           >
                         </p>
+
+                       <div class="d-flex justify-content-end gap-2">
+                        <button class=" btn-danger border-0 p-2 rounded">O'chirish</button>
+                       </div>
                       </div>
                     </div>
                   </div>
@@ -72,7 +76,7 @@ import axios from 'axios';
  
   await axios
     .get(
-      `https://dilkhush-fayz.herokuapp.com/api/product/byCategory?category=Fast Food`,
+      `https://dilkhush-fayz.herokuapp.com/api/product/byCategory?category=fast_foods`,
 
       {
         headers: {
@@ -82,6 +86,7 @@ import axios from 'axios';
       }
     )
     .then((res) => {
+      console.log(res)
       this.loade = false;
       res.data.data.forEach((el) => {
      

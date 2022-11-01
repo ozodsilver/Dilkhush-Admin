@@ -324,6 +324,7 @@ export default {
         },
       })
       .then((res) => {
+        console.log(res)
         this.loading = false;
 
     or.innerHTML = res.data.data.length 
