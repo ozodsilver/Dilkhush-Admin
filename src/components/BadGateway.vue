@@ -5,6 +5,16 @@
         Mahsulot qo'shish <i class="fas fa-plus-circle text-primary"></i>
       </h1>
 
+      <div
+        class="badge w-75 position-absolute m-auto bg-success p-5"
+        v-if="added"
+      >
+        <h2>
+          Mahsulotlar muvaffaqiyatli qo'shildi
+          <i class="fas fa-check text-white"></i>
+        </h2>
+      </div>
+
       <img src="../assets/dilkhush.png" alt="" class="w-25 m-auto d-block" />
 
       <select class="form-select" v-model="val">
@@ -62,14 +72,14 @@
               v-on:change="handleFileUpload()"
             />
             <label class="input-group-text" for="inputGroupFile02"
-              >Rasm yuklash</label
+              >mahsulot rasmini yuklash</label
             >
           </div>
         </div>
 
         <div class="col-12">
           <button
-            class="btn-danger border-0 p-3 rounded w-25"
+            class="btn-success border-0 p-2 rounded w-25"
             @click="PostGoods"
           >
             joylash <i class="fas fa-plus"></i>
@@ -86,6 +96,8 @@ export default {
   name: "AddProduct",
   data() {
     return {
+      added: false,
+
       val: "",
       name: "",
       description: "",
@@ -103,11 +115,10 @@ export default {
     async PostGoods() {
       let num = +this.price;
 
-  console.log(this.image)
+      console.log(this.image);
 
-
-
-      await axios
+if(this.image !== '' && this.name !== '' && this.val !== '' && this.description !== ''  && this.price !== ''){
+  await axios
         .post(
           "https://dilkhush-fayz.herokuapp.com/api/product/add",
 
@@ -123,15 +134,32 @@ export default {
           {
             headers: {
               "Content-Type": "multipart/form-data",
-              "Authorization": `${localStorage.getItem("jwt")}`,
+              Authorization: `${localStorage.getItem("jwt")}`,
             },
-          },
-
-         
+          }
         )
         .then((el) => {
           console.log(el);
+          console.log(el.data.message == 'Data is  created')
+        setTimeout(()=>{
+          if(el.data.message == 'Data is  created'){
+            this.added = true;
+          }
+        }, 10)
+
+        setTimeout(()=>{
+          if(el.data.message == 'Data is  created'){
+            this.added = false;
+          }
+        }, 4000)
+        
+
         });
+}else{
+  alert("to'ldirilmagan maydon mavjud tekshiring")
+}
+
+    
     },
   },
 };
