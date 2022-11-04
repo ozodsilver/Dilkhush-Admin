@@ -10,7 +10,7 @@
 
 
         <div class="row">
-  <div class="col-12">
+  <div class="col-12" style="min-height: 100vh;">
  
   <div v-for="foods in FastFoods" :key="foods._id">
                 <div class="card mb-3 shadow-lg " >
@@ -23,7 +23,7 @@
                       />
                     </div>
                     <div class="col-md-7">
-                      <div class="card-body">
+                      <div class="card-body" >
                         <h3 class="card-title">{{ foods.name }}</h3>
                         <p class="card-text">
                           {{ foods.description }}
@@ -45,10 +45,12 @@
                           <small class="text-muted"
                             >oxirgi yangilanish {{ foods.updatedAt }}</small
                           >
+                       
+                        
                         </p>
 
                        <div class="d-flex justify-content-end gap-2">
-                        <button class=" btn-danger border-0 p-2 rounded">O'chirish</button>
+                        <button class=" btn-danger border-0 p-2 rounded" @click="DeleteProduct(foods._id)">O'chirish</button>
                        </div>
                       </div>
                     </div>
@@ -68,7 +70,8 @@ import axios from 'axios';
         data(){
             return {
                 FastFoods:[],
-                loade: true
+                loade: true,
+                
         }
     },
 
@@ -94,6 +97,29 @@ import axios from 'axios';
       });
     });
 },
+
+methods:{
+ async DeleteProduct(id){
+
+  console.log(id)
+await axios.delete(`https://dilkhush-fayz.herokuapp.com/api/product/${id}`, 
+{
+  headers: {
+          "Content-Type": "application/json",
+          Authorization: `${localStorage.getItem("jwt")}`,
+        },
+})
+
+setTimeout(()=>{
+this.$router.replace('/Home')
+     },10)
+
+     setTimeout(()=>{
+this.$router.replace('/profile')
+     },500)
+
+  }
+}
 }
 </script>
 
