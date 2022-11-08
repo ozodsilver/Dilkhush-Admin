@@ -2,7 +2,7 @@
   <div class="flexible-content ">
     <div class="sidebar-fixed position-fixed ">
       <a class="logo-wrapper"
-        ><img alt="" class="img-fluid" src="./assets/dilkhush.png"
+        style="position: relative; z-index:888"><img alt="" class="img-fluid" src="./assets/dilkhush.png"
       /></a>
       <mdb-list-group class="list-group-flush">
         <router-link to="/dashboard" @click.native="activeItem = 1">
@@ -15,17 +15,18 @@
             />Buyurtmalar</mdb-list-group-item
           >
         </router-link>
-        <router-link to="/profile" @click.native="activeItem = 2">
+        <router-link to="/profile" @click.native="activeItem = 2" class="mt-2">
           <mdb-list-group-item
             :action="true"
             :class="activeItem === 2 && 'active'"
             ><mdb-icon icon="utensils" class="mr-3" />Maxsulotlar</mdb-list-group-item
           >
         </router-link>
-        <router-link to="/tables" @click.native="activeItem = 3">
+        <router-link to="/tables" @click.native="activeItem = 3" class="mt-2 rounded-0">
           <mdb-list-group-item
             :action="true"
             :class="activeItem === 3 && 'active'"
+            
             ><mdb-icon icon="fas fa-hourglass-end" class="mr-3" />finished product</mdb-list-group-item
           >
         </router-link>
@@ -101,6 +102,7 @@ main {
 .flexible-content {
   transition: padding-left 0.3s;
   padding-left: 270px;
+  
 }
 .flexible-navbar {
   transition: padding-left 0.5s;
@@ -113,10 +115,27 @@ main {
   width: 270px;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
   z-index: 1050;
-  background-color: #fff;
+  background-color: rgba(17, 15, 15, 0.407);
+  background-image:  url('https://images2.alphacoders.com/101/1019901.jpg') ;
+
+  background-position: center;
+  background-size: cover;
+position: relative;
   padding: 1.5rem;
   padding-top: 0;
 }
+
+.sidebar-fixed:before{
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  background: rgba(129, 126, 126, 0.7);
+}
+
+
 .sidebar-fixed .logo-wrapper img {
   width: 100%;
   padding: 2.5rem;
@@ -135,6 +154,7 @@ main {
   }
   .flexible-content {
     padding-left: 0;
+   
   }
   .flexible-navbar {
     padding-left: 10px;

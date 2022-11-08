@@ -51,12 +51,18 @@
                     >
                   </p>
 
+                  <p class="card-text">
+                    <small class="text-muted"
+                      >Mahsulot holati: <b class="fs-5">{{ foods.isExist ? 'Faol': 'Nofaol' }}</b> </small
+                    >
+                  </p>
+
                   <div class="d-flex justify-content-end gap-2">
                     <button
                       class="btn-warning border-0 p-2 rounded"
                       @click="Isactive(foods._id)"
                     >
-                      Inactive
+                      Mahsulotni holatini o'zgartirish
                     </button>
                     <button
                       class="btn-danger border-0 p-2 rounded"
@@ -134,7 +140,7 @@ export default {
         .put(
           `https://dilkhush-fayz.herokuapp.com/api/product/isExist/${id2}`,
           {
-            isExist: false,
+           
           },
           {
             headers: {
@@ -146,8 +152,16 @@ export default {
         .then((el) => {
           console.log(el);
           if (el.data.data.isExist == false) {
-            alert("Mahsulot deactive qilindi");
+            alert("Mahsulot nofaol holatga keltirildi");
           }
+
+          setTimeout(() => {
+        this.$router.replace("/Home");
+      }, 10);
+
+      setTimeout(() => {
+        this.$router.replace("/profile");
+      }, 500);
         });
     },
   },

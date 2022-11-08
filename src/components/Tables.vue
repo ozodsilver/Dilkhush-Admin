@@ -108,7 +108,7 @@ methods:{
         .put(
           `https://dilkhush-fayz.herokuapp.com/api/product/isExist/${id}`,
           {
-            isExist: true,
+           
           },
           {
             headers: {
@@ -119,8 +119,8 @@ methods:{
         )
         .then((el) => {
           console.log(el);
-          if (el.data.data.isExist == false) {
-            alert("Mahsulot deactive qilindi");
+          if (el.data.data.isExist == true) {
+            alert("Mahsulot active qilindi");
           }
         });
     },
