@@ -3,7 +3,7 @@ import Router from 'vue-router';
 import Dashboard from '@/components/Dashboard'
 import Profile from '@/components/Profile'
 import Tables from '@/components/Tables'
-
+import Band from '../components/Band'
 import BadGateway from '@/components/BadGateway'
 import Login from '@/components/Login'
 import Home from '../Home.vue'
@@ -30,6 +30,13 @@ export default new Router({
       component: Dashboard,
       props: { page: 1 },
       alias: '/'
+    },
+
+    {
+      path: '/BandQilish',
+      name: 'band',
+      component: Band,
+      
     },
     {
       path: '/profile',

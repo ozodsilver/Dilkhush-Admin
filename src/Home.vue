@@ -43,6 +43,18 @@
             />Maxsulot qo'shish</mdb-list-group-item
           >
         </router-link>
+
+
+        <router-link to="/BandQilish" @click.native="activeItem = 6">
+          <mdb-list-group-item
+            :action="true"
+            :class="activeItem === 6 && 'active'"
+            ><mdb-icon
+              icon=" fas fa-chair"
+              class="mr-3"
+            />Band qilish</mdb-list-group-item
+          >
+        </router-link>
       </mdb-list-group>
     </div>
     <!-- /Sidebar  -->
