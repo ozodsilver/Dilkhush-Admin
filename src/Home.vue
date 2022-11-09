@@ -27,7 +27,7 @@
             :action="true"
             :class="activeItem === 3 && 'active'"
             
-            ><mdb-icon icon="fas fa-hourglass-end" class="mr-3" />finished product</mdb-list-group-item
+            ><mdb-icon icon="fas fa-hourglass-end" class="mr-3" />finished products</mdb-list-group-item
           >
         </router-link>
 
@@ -113,12 +113,12 @@ main {
   top: 0;
   height: 100vh;
   width: 270px;
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 0  10px rgba(255, 255, 255, 0.86), 0 2px 10px 0 rgba(247, 236, 236, 0.12);
   z-index: 1050;
-  background-color: rgba(17, 15, 15, 0.407);
-  background-image:  url('https://images2.alphacoders.com/101/1019901.jpg') ;
+  background-color: rgb(17, 15, 15);
+  background-image:  url('https://render.fineartamerica.com/images/rendered/default/greeting-card/images/artworkimages/medium/2/variety-of-green-vegetables-produce-on-daxiao-productions.jpg?&targetx=0&targety=-27&imagewidth=500&imageheight=754&modelwidth=500&modelheight=700&backgroundcolor=889D89&orientation=1') ;
 
-  background-position: center;
+  background-position: 100px;
   background-size: cover;
 position: relative;
   padding: 1.5rem;
@@ -132,7 +132,7 @@ position: relative;
   width: 100%;
   height: 100%;
   left: 0;
-  background: rgba(129, 126, 126, 0.7);
+  background: rgba(152, 148, 148, 0.7);
 }
 
 

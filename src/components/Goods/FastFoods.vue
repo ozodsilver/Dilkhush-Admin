@@ -6,7 +6,7 @@
       v-if="loade"
     >
       <div
-        class="spinner-grow text-white"
+        class="spinner-grow text-danger"
         style="width: 3rem; height: 3rem"
         role="status"
       >

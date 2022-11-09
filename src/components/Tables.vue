@@ -25,7 +25,7 @@
             </div>
             <div class="col-md-7">
               <div class="card-body" >
-                <h3 class="card-title">{{ foods.name }}</h3>
+                <h3 class="card-title">Address</h3>
                 <p class="card-text">
                   {{ foods.description }}
                 </p>
@@ -83,7 +83,7 @@ import axios from 'axios';
  
   await axios
     .get(
-      `https://dilkhush-fayz.herokuapp.com/api/product/byCategory?category=fast_foods`,
+      `https://dilkhush-fayz.herokuapp.com/api/order/inactiveOrder`,
 
       {
         headers: {
@@ -93,11 +93,13 @@ import axios from 'axios';
       }
     )
     .then((res) => {
-      console.log(res)
+      console.log(res.data.data)
       this.loade = false;
+
       res.data.data.forEach((el) => {
      
         this.FastFoods.push(el);
+   
       });
     });
 },

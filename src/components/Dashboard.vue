@@ -1,14 +1,14 @@
 <template>
   <section id="dashboard">
-    <mdb-card class="mb-4">
+    <mdb-card class="mb-4 rounded-0" style="box-shadow:0 0 50px rgba(222,255,255, 0.2)">
       <mdb-card-body class="d-sm-flex justify-content-between">
         <h4 class="mb-sm-0 pt-2">
-          <a href="" target="_blank">Dilkhush</a><span>/</span
-          ><span>Buyurtmalar</span>
+          <a href="" target="_blank" class="text-light">Dilkhush</a><span class="text-white">/</span
+          ><span class="text-white">Buyurtmalar</span>
         </h4>
 
         <div class="d-flex align-items-center justify-content-between w-50">
-          <b class="fas fa-sync text-muted" @click="updatee"></b>
+          <b class="fas fa-sync text-white" @click="updatee"></b>
           <button
             type="button"
             class="border-0 rounded btn-primary position-relative"
@@ -30,8 +30,8 @@
             </span>
           </button>
           <div class="d-flex flex-column align-items-center">
-            <i class="fas fa-user-alt text-muted"></i>
-            <span class="text-muted">Admin</span>
+            <i class="fas fa-user-alt text-white"></i>
+            <span class="text-white">Admin</span>
           </div>
           <p></p>
           <!-- <form class="d-flex md-form justify-content-center" style="margin: 0">
@@ -156,8 +156,8 @@
 
     <div class="container-fluid p-4" style="min-height: 100vh;">
       <div class="w-100 d-flex justify-content-between">
-        <h1 class="text-muted text-left text-primary badge bg-success p-2 position-relative" style="z-index:8888">Faol buyurtmalar</h1>
-      <h1 class="text-muted text-left text-primary badge bg-danger p-2 position-relative" style="z-index:8888; cursor:pointer">Nofaol buyurtmalar</h1>
+        <h1 class="text-muted text-left text-primary badge bg-success p-2 position-relative" style="z-index:8888">Faol buyurtmalar <span class="badge bg-danger" id="or2"></span></h1>
+      <router-link to="/NoActive" class="text-primary   badge bg-danger d-flex align-items-center  position-relative" style="z-index:8888; cursor:pointer">Nofaol buyurtmalar</router-link>
       </div>
       <div
         class="w-100 d-flex justify-content-center align-items-center"
@@ -169,7 +169,7 @@
 
       <div class="row">
         <div class="col-6 mt-3" v-for="zakaz in zakazlar" :key="zakaz._id">
-          <div class="card p-4">
+          <div class="card p-4 shadow-lg">
             <!-- <h4>{{zakaz}}</h4> -->
             <div
               class="bg-image hover-overlay ripple"
@@ -189,35 +189,35 @@
                 Buyurtma berilgan telefon raqami
               </h5>
               <div class="d-flex align-items-center">
-                <i class="fas fa-phone fa-2x text-primary"></i>
-                <h5 class="text-muted m-0 ml-3">{{ zakaz.phone }}</h5>
+                <i class="fas fa-phone fa-2x text-success"></i>
+                <h5 class="text-white m-0 ml-3">{{ zakaz.phone }}</h5>
               </div>
               <hr />
-              <h5 class="text-muted">Buyurtma beruvchining manzili</h5>
+              <h5 class="text-white">Buyurtma beruvchining manzili</h5>
               <div class="d-flex align-items-center">
-                <i class="fas fa-map-marked-alt fa-2x text-primary"></i>
-                <h5 class="ml-3 m-0 text-muted">{{ zakaz.address }}</h5>
+                <i class="fas fa-map-marked-alt fa-2x text-dark"></i>
+                <h5 class="ml-3 m-0 text-white">{{ zakaz.address }}</h5>
               </div>
 
               <hr />
-              <h5 class="text-muted">Buyurtma beruvchi</h5>
+              <h5 class="text-white">Buyurtma beruvchi</h5>
               <div class="d-flex align-items-center">
-                <i class="far fa-user-circle fa-2x text-primary"></i>
-                <h5 class="ml-3 m-0 text-muted">{{ zakaz.user_name }}</h5>
+                <i class="far fa-user-circle fa-2x text-light"></i>
+                <h5 class="ml-3 m-0 text-white">{{ zakaz.user_name }}</h5>
               </div>
               <hr />
-              <h4 class="text-muted">
-                <i class="fas fa-utensils"></i> Buyurtma qilingan maxsulotlar
+              <h4 class="text-white">
+                <i class="fas fa-utensils text-warning"></i> Buyurtma qilingan maxsulotlar
               </h4>
               <h5 v-for="(pro, index) in zakaz.product_ID" :key="index">
                 <div class="d-flex align-items-center">
-                  <h5 class="ml-3 m-0">{{ pro.name }} - {{ pro.count }}</h5>
+                  <h5 class="ml-3 m-0 text-white">{{ pro.name }} - {{ pro.count }}</h5>
                 </div>
                 <hr />
               </h5>
 
               <div>
-                <h5 class="text-muted">Umumiy narx</h5>
+                <h5 class="text-white">Umumiy narx</h5>
                 <div class="d-flex align-items-center">
                   <i class="fas fa-hand-holding-usd fa-2x text-primary"></i>
                   <h5 class="ml-3 m-0 text-warning">{{ zakaz.totalPrice }}</h5>
@@ -226,7 +226,7 @@
 
               <div class="d-flex justify-content-between align-items-center">
                 <span class="text-success">
-                  <span class="text-dark">status:</span>
+                  <span class="text-white">status:</span>
                   {{ zakaz.status }}</span
                 >
                 <div>
@@ -311,6 +311,7 @@ export default {
 
   async mounted() {
     let or = document.querySelector("#or");
+    let or2 = document.querySelector("#or2");
     await axios
       .get("https://dilkhush-fayz.herokuapp.com/api/order/activeOrder", {
         headers: {
@@ -321,7 +322,7 @@ export default {
       .then((res) => {
         console.log(res);
         this.loading = false;
-
+        or2.innerHTML = res.data.data.length;
         or.innerHTML = res.data.data.length;
         res.data.data.forEach((el) => {
           this.zakazlar.push(el);
@@ -342,8 +343,7 @@ export default {
     },
 
     async DeleteOrder(id) {
-      console.log(id);
-      console.log(`${localStorage.getItem("jwt")}`);
+      
       await axios
         .put(
           `https://dilkhush-fayz.herokuapp.com/api/order/updateInActive/${id}`,
@@ -361,6 +361,15 @@ export default {
          if(el.data.message == 'Order is noactived'){
           alert("Buyurtma O'chirildi, va tarixga qo'shildi")
          }
+
+         setTimeout(()=>{
+          this.$router.replace('/profile')
+         },100)
+
+         setTimeout(()=>{
+          this.$router.replace('/Home')
+         },800)
+       
         });
     },
   },
@@ -371,7 +380,7 @@ export default {
 <style scoped>
 
 #dashboard{
-  background: url('https://www.desktopbackground.org/download/1920x1080/2011/02/14/157809_5000x3300px-pizza-food-wallpapers_5184x3456_h.jpg');
+  background: url('https://phonoteka.org/uploads/posts/2021-11/1635892990_37-phonoteka-org-p-dostavka-yedi-fon-krasivie-38.jpg');
   background-size: cover;
   background-position: center;
   position: relative;
@@ -386,14 +395,14 @@ export default {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.5);
 }
 
 
 .card{
-  backdrop-filter: blur(25px) saturate(131%);
-    -webkit-backdrop-filter: blur(25px) saturate(131%);
-    background-color: rgba(17, 25, 40, 0);
+  backdrop-filter: blur(8px) saturate(180%);
+    -webkit-backdrop-filter: blur(8px) saturate(180%);
+    background-color: rgba(182, 183, 185, 0.38);
     border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.125);
 }

@@ -7,6 +7,7 @@ import Band from '../components/Band'
 import BadGateway from '@/components/BadGateway'
 import Login from '@/components/Login'
 import Home from '../Home.vue'
+import NoActive from '../components/Goods/NoActive.vue'
 Vue.use(Router);
 
 export default new Router({
@@ -22,6 +23,13 @@ export default new Router({
       path: '/Home',
       component: Home
     },
+
+    
+    {
+      path: '/NoActive',
+      component: NoActive
+    },
+
 
 
     {

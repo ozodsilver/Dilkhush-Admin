@@ -46,6 +46,31 @@
                             >oxirgi yangilanish {{ foods.updatedAt }}</small
                           >
                         </p>
+
+
+                        <p class="card-text">
+                    <small class="text-muted"
+                      >Mahsulot holati: <b class="fs-5">{{ foods.isExist ? 'Faol': 'Nofaol' }}</b> </small
+                    >
+                  </p>
+
+
+                  <div class="d-flex justify-content-end gap-2">
+                    <button
+                      class="btn-warning border-0 p-2 rounded"
+                      @click="Isactive(foods._id)"
+                    >
+                      Mahsulotni holatini o'zgartirish
+                    </button>
+                    <button
+                      class="btn-danger border-0 p-2 rounded"
+                      @click="DeleteProduct(foods._id)"
+                    >
+                      O'chirish
+                    </button>
+                  </div>
+
+
                       </div>
                     </div>
                   </div>
@@ -89,6 +114,60 @@ import axios from 'axios';
       });
     });
 },
+
+methods: {
+    async DeleteProduct(id) {
+      console.log(id);
+      await axios.delete(
+        `https://dilkhush-fayz.herokuapp.com/api/product/${id}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `${localStorage.getItem("jwt")}`,
+          },
+        }
+      );
+
+      setTimeout(() => {
+        this.$router.replace("/Home");
+      }, 10);
+
+      setTimeout(() => {
+        this.$router.replace("/profile");
+      }, 500);
+    },
+
+    async Isactive(id2) {
+      await axios
+        .put(
+          `https://dilkhush-fayz.herokuapp.com/api/product/isExist/${id2}`,
+          {
+           
+          },
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `${localStorage.getItem("jwt")}`,
+            },
+          }
+        )
+        .then((el) => {
+          console.log(el);
+          if (el.data.data.isExist == false) {
+            alert("Mahsulot nofaol holatga keltirildi");
+          }
+
+          setTimeout(() => {
+        this.$router.replace("/Home");
+      }, 10);
+
+      setTimeout(() => {
+        this.$router.replace("/profile");
+      }, 500);
+        });
+    },
+  },
+
 }
 </script>
 
