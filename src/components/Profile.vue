@@ -20,7 +20,7 @@
         <a class="nav-link "  href="#" @click="selectedComp = 'FastFoods'">Fast Food</a>
         <a class="nav-link" href="#" @click="selectedComp = 'Pizzas'">Pitsalar</a>
         <a class="nav-link" href="#" @click="selectedComp = 'MilliyGoods'">Milliy taomlar</a>
-        <a class="nav-link " href="#"  @click="selectedComp = 'drinks'" >ichimliklar</a
+        <a class="nav-link " href="#"  @click="selectedComp = 'drinks'" >Ichimliklar</a
         >
         <a class="nav-link " href="#"
         @click="selectedComp = 'Salat'" >Salatlar</a

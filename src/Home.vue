@@ -11,48 +11,48 @@
             :class="activeItem === 1 && 'active'"
             ><mdb-icon
               icon="chart-pie"
-              class="mr-3"
+              class="mr-3 text-white"
             />Buyurtmalar</mdb-list-group-item
           >
         </router-link>
-        <router-link to="/profile" @click.native="activeItem = 2" class="mt-2">
+        <router-link to="/profile" @click.native="activeItem = 2" class="mt-3 shadow-lg">
           <mdb-list-group-item
             :action="true"
             :class="activeItem === 2 && 'active'"
-            ><mdb-icon icon="utensils" class="mr-3" />Maxsulotlar</mdb-list-group-item
+            ><mdb-icon icon="utensils" class="mr-3 text-secondary" />Maxsulotlar</mdb-list-group-item
           >
         </router-link>
-        <router-link to="/tables" @click.native="activeItem = 3" class="mt-2 rounded-0">
+        <router-link to="/tables" @click.native="activeItem = 3" class="mt-2 rounded-0 shadow-lg ">
           <mdb-list-group-item
             :action="true"
             :class="activeItem === 3 && 'active'"
             
-            ><mdb-icon icon="fas fa-hourglass-end" class="mr-3" />finished products</mdb-list-group-item
+            ><mdb-icon icon="fas fa-hourglass-end" class="mr-3 text-muted" />Finished products</mdb-list-group-item
           >
         </router-link>
 
 
         
         
-        <router-link to="/404" @click.native="activeItem = 5">
+        <router-link to="/404" @click.native="activeItem = 5" class="shadow-lg ">
           <mdb-list-group-item
             :action="true"
             :class="activeItem === 5 && 'active'"
             ><mdb-icon
               icon=" fa-plus-circle"
-              class="mr-3"
+              class="mr-3 text-success"
             />Maxsulot qo'shish</mdb-list-group-item
           >
         </router-link>
 
 
-        <router-link to="/BandQilish" @click.native="activeItem = 6">
+        <router-link to="/BandQilish" @click.native="activeItem = 6" class="shadow-lg ">
           <mdb-list-group-item
             :action="true"
             :class="activeItem === 6 && 'active'"
             ><mdb-icon
               icon=" fas fa-chair"
-              class="mr-3"
+              class="mr-3 text-warning"
             />Band qilish</mdb-list-group-item
           >
         </router-link>
@@ -113,27 +113,18 @@ main {
   top: 0;
   height: 100vh;
   width: 270px;
-  box-shadow: 0 0  10px rgba(255, 255, 255, 0.86), 0 2px 10px 0 rgba(247, 236, 236, 0.12);
-  z-index: 1050;
-  background-color: rgb(17, 15, 15);
-  background-image:  url('https://render.fineartamerica.com/images/rendered/default/greeting-card/images/artworkimages/medium/2/variety-of-green-vegetables-produce-on-daxiao-productions.jpg?&targetx=0&targety=-27&imagewidth=500&imageheight=754&modelwidth=500&modelheight=700&backgroundcolor=889D89&orientation=1') ;
 
-  background-position: 100px;
+  /* background-image:  url('https://st3.depositphotos.com/12502420/15142/v/1600/depositphotos_151426854-stock-illustration-vector-pizza-pattern.jpg') ; */
+
+  background-position: center;
   background-size: cover;
+  background-repeat: no-repeat;
 position: relative;
   padding: 1.5rem;
   padding-top: 0;
 }
 
-.sidebar-fixed:before{
-  content: '';
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  left: 0;
-  background: rgba(152, 148, 148, 0.7);
-}
+
 
 
 .sidebar-fixed .logo-wrapper img {

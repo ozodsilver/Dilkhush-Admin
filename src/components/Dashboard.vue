@@ -1,6 +1,6 @@
 <template>
   <section id="dashboard">
-    <mdb-card class="mb-4 rounded-0" style="box-shadow:0 0 50px rgba(222,255,255, 0.2)">
+    <mdb-card class="mb-4 rounded-0  border-0 bg-primary bg-gradient" style="box-shadow:0 0 20px rgba(255,255,255, 0.2)">
       <mdb-card-body class="d-sm-flex justify-content-between">
         <h4 class="mb-sm-0 pt-2">
           <a href="" target="_blank" class="text-light">Dilkhush</a><span class="text-white">/</span
@@ -11,7 +11,7 @@
           <b class="fas fa-sync text-white" @click="updatee"></b>
           <button
             type="button"
-            class="border-0 rounded btn-primary position-relative"
+            class="border-0 rounded btn-muted position-relative"
             title="Active buyurtmalar"
           >
             <i class="fas fa-bell"> </i>
@@ -30,8 +30,8 @@
             </span>
           </button>
           <div class="d-flex flex-column align-items-center">
-            <i class="fas fa-user-alt text-white"></i>
-            <span class="text-white">Admin</span>
+            <i class="fas fa-user-circle text-white"></i>
+            <span class="text-white" style="font-size:13px">Admin</span>
           </div>
           <p></p>
           <!-- <form class="d-flex md-form justify-content-center" style="margin: 0">
@@ -157,7 +157,7 @@
     <div class="container-fluid p-4" style="min-height: 100vh;">
       <div class="w-100 d-flex justify-content-between">
         <h1 class="text-muted text-left text-primary badge bg-success p-2 position-relative" style="z-index:8888">Faol buyurtmalar <span class="badge bg-danger" id="or2"></span></h1>
-      <router-link to="/NoActive" class="text-primary   badge bg-danger d-flex align-items-center  position-relative" style="z-index:8888; cursor:pointer">Nofaol buyurtmalar</router-link>
+      <router-link to="/NoActive" class="text-primary   badge bg-danger d-flex align-items-center rounded-2  position-relative" style="z-index:8888; cursor:pointer">Nofaol buyurtmalar</router-link>
       </div>
       <div
         class="w-100 d-flex justify-content-center align-items-center"
@@ -169,7 +169,7 @@
 
       <div class="row">
         <div class="col-6 mt-3" v-for="zakaz in zakazlar" :key="zakaz._id">
-          <div class="card p-4 shadow-lg">
+          <div class="card p-4 rounded-4 shadow-lg">
             <!-- <h4>{{zakaz}}</h4> -->
             <div
               class="bg-image hover-overlay ripple"
@@ -185,42 +185,42 @@
 
             <div class="card-body">
               <!-- <h5 class="card-title">{{ zakaz }}</h5> -->
-              <h5 class="text-white" style="font-weight: bold">
+              <h5 class="text-dark" style="font-weight: bold">
                 Buyurtma berilgan telefon raqami
               </h5>
               <div class="d-flex align-items-center">
                 <i class="fas fa-phone fa-2x text-success"></i>
-                <h5 class="text-white m-0 ml-3">{{ zakaz.phone }}</h5>
+                <h5 class="text-dark m-0 ml-3">{{ zakaz.phone }}</h5>
               </div>
               <hr />
-              <h5 class="text-white">Buyurtma beruvchining manzili</h5>
+              <h5 class="text-dark">Buyurtma beruvchining manzili</h5>
               <div class="d-flex align-items-center">
                 <i class="fas fa-map-marked-alt fa-2x text-dark"></i>
-                <h5 class="ml-3 m-0 text-white">{{ zakaz.address }}</h5>
+                <h5 class="ml-3 m-0 text-dark">{{ zakaz.address }}</h5>
               </div>
 
               <hr />
-              <h5 class="text-white">Buyurtma beruvchi</h5>
+              <h5 class="text-dark">Buyurtma beruvchi</h5>
               <div class="d-flex align-items-center">
-                <i class="far fa-user-circle fa-2x text-light"></i>
-                <h5 class="ml-3 m-0 text-white">{{ zakaz.user_name }}</h5>
+                <i class="far fa-user-circle fa-2x text-dark"></i>
+                <h5 class="ml-3 m-0 text-dark">{{ zakaz.user_name }}</h5>
               </div>
               <hr />
-              <h4 class="text-white">
-                <i class="fas fa-utensils text-warning"></i> Buyurtma qilingan maxsulotlar
+              <h4 class="text-dark">
+                <i class="fas fa-utensils text-danger"></i> Buyurtma qilingan maxsulotlar
               </h4>
               <h5 v-for="(pro, index) in zakaz.product_ID" :key="index">
                 <div class="d-flex align-items-center">
-                  <h5 class="ml-3 m-0 text-white">{{ pro.name }} - {{ pro.count }}</h5>
+                  <h5 class="ml-3 m-0 text-dark">{{ pro.name }} - {{ pro.count }}</h5>
                 </div>
                 <hr />
               </h5>
 
               <div>
-                <h5 class="text-white">Umumiy narx</h5>
+                <h5 class="text-dark">Umumiy narx</h5>
                 <div class="d-flex align-items-center">
                   <i class="fas fa-hand-holding-usd fa-2x text-primary"></i>
-                  <h5 class="ml-3 m-0 text-warning">{{ zakaz.totalPrice }}</h5>
+                  <h5 class="ml-3 m-0 text-dark">{{ zakaz.totalPrice }}</h5>
                 </div>
               </div>
 
@@ -395,16 +395,16 @@ export default {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(201, 213, 213, 0.5);
 }
 
 
 .card{
   backdrop-filter: blur(8px) saturate(180%);
     -webkit-backdrop-filter: blur(8px) saturate(180%);
-    background-color: rgba(182, 183, 185, 0.38);
+    background-color: rgba(233, 240, 252, 0.606);
     border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.125);
+    border: 1px solid rgba(255, 245, 245, 0.564);
 }
 
 
