@@ -8,6 +8,7 @@ import BadGateway from '@/components/BadGateway'
 import Login from '@/components/Login'
 import Home from '../Home.vue'
 import NoActive from '../components/Goods/NoActive.vue'
+import screen from '../components/screen.vue'
 Vue.use(Router);
 
 export default new Router({
@@ -58,16 +59,23 @@ export default new Router({
       props: { page: 3 },
       component: Tables
     },
+
+    {
+      path: '/screen',
+      name: 'screen',
+      props: { page: 4 },
+      component: screen
+    },
    
     {
-      path: '/404',
+      path: '/addProduct',
       name: 'BadGateway',
       props: { page: 5 },
       component: BadGateway
     },
     {
       path: '*',
-      props: { page: 5 },
+    
       redirect: '/'
     }
   ]

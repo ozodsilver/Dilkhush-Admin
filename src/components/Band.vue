@@ -14,37 +14,46 @@
           </div>
 
 
+<ul></ul>
+
+
+
+            
 
                 <div class="card mb-3"  v-for = 'info in infos' :key="info._id">
-                  
+                 
   <div class="row g-0">
     <div class="col-md-4">
       <img src="https://cdn.luxatic.com/wp-content/uploads/2021/10/Le-Bernardin.jpg" alt=""  class="img img-fluid">
     </div>
     <div class="col-md-8">
       <div class="card-body">
-        <h5 class="card-title">Joy band qilish uchun buyurtma</h5>
-        <div class="d-flex">
+        <h3 class="card-title text-muted">Joy band qilish uchun buyurtma</h3>
+        <div class="d-flex gap-2">
+          <i class="fas fa-file-signature text-info"></i>
           <h6>Fullname: {{info.userID.fullName}} </h6>
           <p class="card-text">
           
         </p>
         </div>
-        <div class="d-flex">
+        <div class="d-flex gap-2">
+          <i class="fas fa-phone-square-alt text-success"></i>
           <h6>Tel nomer: </h6>
           <p class="card-text">
             {{info.phone}}
         </p>
         </div>
 
-        <div class="d-flex">
+        <div class="d-flex gap-2">
+          <i class="fas fa-users text-warning"></i>
           <h6>Odamlar soni: </h6>
           <p class="card-text">
          {{info.user_count}}
         </p>
         </div>
 
-        <div class="d-flex">
+        <div class="d-flex gap-2">
+          <i class="far fa-clock text-muted"></i>
           <h6>Buyurtma berilgan vaqt: </h6>
           <p class="card-text">
            {{info.arrival_time}}
@@ -63,54 +72,54 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 export default {
- 
+  data() {
+    return {
+      infos: [],
+      load: true,
+    };
+  },
 
-    data() {
-        return {
-            infos:[],
-            load:true
-        };
+  async mounted() {
+    await axios
+      .get("https://dilkhush-fayz.herokuapp.com/api/band/all", {
+        headers: {
+          Authorization: `${localStorage.getItem("jwt")}`,
+        },
+      })
+      .then((el) => {
+        console.log(el);
+        el.data.forEach((res) => {
+          console.log(res);
+          this.infos.push(res);
+          this.load = false;
+        });
+      });
+  },
+
+  methods: {
+    async DeleteProduct(id) {
+      await axios
+        .delete(`https://dilkhush-fayz.herokuapp.com/api/band/${id}`, {
+          headers: {
+            Authorization: `${localStorage.getItem("jwt")}`,
+          },
+        })
+        .then((el) => {
+          console.log(el.data.message);
+          if (el.data.message == "Band successfully deleted") {
+            alert("buyurtma o'chirildi");
+          }
+        });
     },
-
-    async mounted() {
-        
-await axios.get('https://dilkhush-fayz.herokuapp.com/api/band/all', {
-  headers:{
-    Authorization:`${localStorage.getItem('jwt')}`
-  }
-}).then(el => {
-  console.log(el)
-  el.data.forEach(res => {
-    console.log(res)
-    this.infos.push(res)
-    this.load = false
-  })
-})
-
-    },
-
-    methods: {
-      async  DeleteProduct(id){
-await axios.delete(`https://dilkhush-fayz.herokuapp.com/api/band/${id}`, {
-  headers:{
-    Authorization:`${localStorage.getItem('jwt')}`
-  }
-}).then(el => {
-  console.log(el.data.message)
-  if(el.data.message == 'Band successfully deleted'){
-  alert("buyurtma o'chirildi")
-  }
-})
-        }
-    },
+  },
 };
 </script>
 
 <style  scoped>
-#band{
-  background-image: url('https://phonoteka.org/uploads/posts/2022-02/1644356122_31-phonoteka-org-p-fon-dlya-blyud-33.jpg');
+#band {
+  background-image: url("https://phonoteka.org/uploads/posts/2022-02/1644356122_31-phonoteka-org-p-fon-dlya-blyud-33.jpg");
   background-position: center;
   background-size: cover;
   min-height: 100vh;

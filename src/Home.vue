@@ -34,7 +34,7 @@
 
         
         
-        <router-link to="/404" @click.native="activeItem = 5" class="shadow-lg ">
+        <router-link to="/addProduct" @click.native="activeItem = 5" class="shadow-lg ">
           <mdb-list-group-item
             :action="true"
             :class="activeItem === 5 && 'active'"
@@ -52,8 +52,19 @@
             :class="activeItem === 6 && 'active'"
             ><mdb-icon
               icon=" fas fa-chair"
-              class="mr-3 text-warning"
+              class="mr-3 text-muted"
             />Band qilish</mdb-list-group-item
+          >
+        </router-link>
+
+        <router-link to="/screen" @click.native="activeItem = 6" class="shadow-lg ">
+          <mdb-list-group-item
+            :action="true"
+            :class="activeItem === 6 && 'active'"
+            ><mdb-icon
+              icon=" fas fa-dollar-sign text-warning"
+              class="mr-3 text-warning"
+            />To'lovlar</mdb-list-group-item
           >
         </router-link>
       </mdb-list-group>

@@ -13,7 +13,7 @@
 <div class="row">
 <div class="col-12" style="min-height: 100vh;">
 
-<div v-for="foods in FastFoods" :key="foods._id">
+<div v-for="foods in FastFoods" :key="foods._id" v-if="foods.isExist == false">
         <div class="card mb-3 shadow-lg " >
           <div class="row g-0">
             <div class="col-md-5 ">
@@ -25,9 +25,9 @@
             </div>
             <div class="col-md-7">
               <div class="card-body" >
-                <h3 class="card-title">Address</h3>
+                <h3 class="card-title">Maxsulot nomi: <span class="text-success fs-4 badge bg-danger"> {{foods.name}}</span></h3>
                 <p class="card-text">
-                  {{ foods.description }}
+                  tavsif:  {{ foods.description }}
                 </p>
 
                 <p class="card-text d-flex align-items-center">
@@ -45,6 +45,15 @@
                 <p class="card-text">
                   <small class="text-muted"
                     >oxirgi yangilanish {{ foods.updatedAt }}</small
+                  >
+               
+                
+                </p>
+
+                <p class="card-text">
+                  
+                  <small class="text-muted"
+                    > <span class="badge bg-dark p-2">Mahsulot holati</span>  {{ foods.isExist == true  ? 'faol' :'nofaol' }} </small
                   >
                
                 
@@ -75,6 +84,7 @@ import axios from 'axios';
             return {
                 FastFoods:[],
                 loade: true,
+                show:true
                 
         }
     },
@@ -83,7 +93,7 @@ import axios from 'axios';
  
   await axios
     .get(
-      `https://dilkhush-fayz.herokuapp.com/api/order/inactiveOrder`,
+      `https://dilkhush-fayz.herokuapp.com/api/product/all`,
 
       {
         headers: {

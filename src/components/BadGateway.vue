@@ -144,6 +144,13 @@ if(this.image !== '' && this.name !== '' && this.val !== '' && this.description 
         setTimeout(()=>{
           if(el.data.message == 'Data is  created'){
             this.added = true;
+            this.val = ''
+            this.name = ''
+            this.description = ''
+            this.details = ''
+            this.price = ''
+         this.image = ''
+
           }
         }, 10)
 

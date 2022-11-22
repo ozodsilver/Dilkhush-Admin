@@ -224,6 +224,15 @@
                 </div>
               </div>
 
+
+              <div>
+                <h5 class="text-dark mt-3">Buyurtma berilgan vaqt</h5>
+                <div class="d-flex align-items-center">
+                  <i class="fas fa-clock fa-2x text-muted"></i>
+                  <h5 class="ml-3 m-0 text-dark">{{ zakaz.createdAt }}</h5>
+                </div>
+              </div>
+
               <div class="d-flex justify-content-between align-items-center">
                 <span class="text-success">
                   <span class="text-white">status:</span>

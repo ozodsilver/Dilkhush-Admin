@@ -1,5 +1,6 @@
 <template>
   <div id="pro" class="py-3">
+    <button class="border-0 rounded-3 btn-light ml-4 p-1 px-2 position-absolute" @click="back"><i class="fas fa-arrow-circle-left fa-2x text-muted"></i></button>
     <div class="container">
       <nav class="navbar navbar-expand-lg my-3 rounded navbar-light bg-light">
   <div class="container-fluid">
@@ -61,6 +62,12 @@ Salat
       selectedComp:'FastFoods'
      }
     },
+
+    methods:{
+      back(){
+        this.$router.go(-1)
+      }
+    }
 
   
 
